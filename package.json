@@ -1,20 +1,29 @@
 {
   "name": "picky-loader",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Javascript picky loader",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vladsovetov/picky-loader.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "Loader",
+    "Performance"
+  ],
+  "author": "Vlad Sovetov",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vladsovetov/picky-loader/issues"
